@@ -1,11 +1,10 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const catController = require('../controllers/catController');
 
 router.route('/')
-    .get((req, res) => {
-        res.send('From this endpoint you can get cats.')
-    })
+    .get(catController.cat_list_get)
     .post((req, res) => {
         res.send('With this endpoint you can add cats.')
     })
@@ -17,10 +16,13 @@ router.route('/')
     });
 
 router.route('/:id')
-    .get((req, res) => {
-    res.send('You reqested a cat whose id is ' + req.params.id)
-});
+    .get(catController.cat_get);
 
 module.exports = router;
 
-//catRoutes
+/*
+router.route('/:id')
+    .get((req, res) => {
+    res.send('You reqested a cat whose id is ' + req.params.id)
+});
+ */
