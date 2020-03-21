@@ -2,10 +2,16 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const cat = require('./routes/catRoute');
-const user = require('./routes/userRoute');
+const cats = require('./routes/catRoute');
+const users = require('./routes/userRoute');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-app.use('/cat', cat);
-app.use('/user', user);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/cat', cats);
+app.use('/user', users);
+
+app.listen(port, () => console.log('Example app listening on port ${port}!'));
