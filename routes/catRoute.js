@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const catController = require('../controllers/catController');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({dest: 'uploads/'});
 
 router.route('/')
     .get(catController.cat_list_get)
@@ -19,4 +19,6 @@ router.route('/')
 router.route('/:id')
     .get(catController.cat_get);
 
-module.exports = router;
+module.exports = {
+    router,
+}

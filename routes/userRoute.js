@@ -5,10 +5,9 @@ const userController = require('../controllers/userController');
 const multer = require('multer');
 const upload = multer();
 
-
 router.route('/')
     .get(userController.user_list_get)
-    .post(upload.array(),(req, res) => {
+    .post(upload.array(), (req, res) => {
         console.log(req.body)
     })
     .put((req, res) => {
@@ -21,4 +20,6 @@ router.route('/')
 router.route('/:id')
     .get(userController.user_get);
 
-module.exports = router;
+module.exports = {
+    router,
+}
