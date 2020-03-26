@@ -11,7 +11,8 @@ router.route('/')
     .post(async (req, res) => {
         const post = await cat.create({
             name: 'karvinen',
-            age: 34
+            age: 34,
+            owner: '5e7caf2b5883db66a5d5df7b'
         });
         res.send(`cat created created with id: ${post._id}`)
     })
